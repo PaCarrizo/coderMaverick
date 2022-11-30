@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from appMaverick.models import Recomendacion,Post,Reclamos
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 # Create your views here.
 
@@ -21,8 +23,14 @@ def post(request):
 
 
 def leftside(request):
-    posteos = Post.objects.all()
-    return render(request,'appMaverick/left-sidebar.html',{"posteos":posteos})
+    entradas = Post.objects.all()
+    queryset = request.GET.get("buscar")
+    if queryset:
+        entradas = Post.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(articulo__icontains  = queryset)
+        ).distinct()
+    return render(request,'appMaverick/left-sidebar.html',{"posteos":entradas})
 
 def noside(request):
     mensaje = "Nos contactaremos por su reclamo"
