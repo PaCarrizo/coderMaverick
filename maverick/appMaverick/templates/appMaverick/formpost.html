@@ -12,36 +12,30 @@
 
 											<!-- Content -->
 												<!-- Form Comentarios-->
-												<h3>Recomendaciones</h3>
+												<h3>Articulos para el BLOG</h3>
 
 												<form method="post" action="#"> {% csrf_token %} 
 													<div class="row gtr-uniform">
 														<div class="col-6 col-12-xsmall">
-															<input type="text" name="reco-name" id="demo-name" value="" placeholder="Nombre" />
+															<input type="text" name="post-name" id="demo-name" value="" placeholder="Nombre del Articulo" />
 														</div>
-														<div class="col-6 col-12-xsmall">
-															<input type="email" name="reco-email" id="demo-email" value="" placeholder="Email" />
-														</div>
-														<!-- Break -->
-														
-														<div class="col-12">
-															<select name="reco-category" id="demo-category">
-																<option value="">- Comidas -</option>
-																<option value="Milanesa">Milanesa</option>
-																<option value="Hamburguesa">Hamburguesa</option>
-																<option value="Lomito">Lomito</option>
-																<option value="Pizza">Pizza</option>
-															</select>
+
+                                                        <div class="col-6 col-12-xsmall">
+															<input type="text" name="post-autor" id="demo-name" value="" placeholder="Autor" />
 														</div>
 													
+                                                        <div class="col-6 col-12-xsmall">
+															<input type="text" name="post-imagen" id="demo-name" value="" placeholder="Link a imagen" />
+														</div>
+
 														<!-- Break -->
 														<div class="col-12">
-															<textarea name="reco-message" id="demo-message" placeholder="Ingrese su Recomendacion" rows="6"></textarea>
+															<textarea name="post-articulo" id="demo-message" placeholder="Ingrese texto del articulo" rows="6"></textarea>
 														</div>
 														<!-- Break -->
 														<div class="col-12">
 															<ul class="actions">
-																<li><input type="submit" value="Enviar Recomendacion" class="primary" /></li>
+																<li><input type="submit" value="Crear Post" class="primary" /></li>
 															</ul>
 														</div>
 													</div>
@@ -90,10 +84,9 @@
 
 												<section>
 													<header class="major">
-														<h2>Sobre las Recomendaciones</h2>
+														<h2>Sobre la creacion de articulos para el blog</h2>
 													</header>
-													<p>En este espacio solicitamos su colaboracion, aportando sus ideas para ampliar y mejorar
-													   nuestro menu con nuevas combinaciones que te gustarian probar. </p>											
+													<p>En este espacio puede crear un articulo relacionados a la gastronomia para compartir su conocimiento con el mundo </p>											
 												</section>
 
 										</div>
