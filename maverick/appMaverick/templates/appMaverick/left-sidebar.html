@@ -8,8 +8,24 @@
 						<div class="inner">
 							<div class="container">
 								<div class="row">
-									<div class="col-8 col-12-medium">
+									<!-- busqueda -->
+									<div class="col-md-12 search">
+										<form method="get">
+											<div id="custom-search-input">
+												<div class="input-group col-md-12">
+													<input type="text" class="from-control" placeholder="Buscar.." name="buscar" value="{{ request.GET.buscar }}">
+													<span class="input-group-list">
+														<i class="icon icon-search"></i>
+														<button type="submit" class="boton btn-success">Buscar</button>
 
+													</span>
+
+												</div>
+
+											</div>	
+										</form>
+									</div>
+									<div class="col-8 col-12-medium">
 										<!-- Article list -->
 											<section class="box article-list">
 												<h2 class="icon fa-file-alt">Posts</h2>
@@ -31,9 +47,9 @@
 												{% endfor %}								
 											</section>
 									</div>
-									<div class="col-4 col-12-medium">
+									<!-- <div class="col-4 col-12-medium">
 
-										<!-- Spotlight -->
+										
 											<section class="box spotlight">
 												<h2 class="icon fa-file-alt">Spotlight</h2>
 												<article>
@@ -54,7 +70,7 @@
 												</article>
 											</section>
 
-									</div>
+									</div>-->
 								</div>
 							</div>
 						</div>
