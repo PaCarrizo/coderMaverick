@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import menu, leftside, noside, rightside,post
+from .views import menu, pagblog, pagreclamos, pagrecomendaciones,post
 
 urlpatterns = [
     path('',menu, name='menu'),
-    path('blog/',leftside, name='blog'),
-    path('reclamo/',noside, name='reclamo'),
-    path('recomendacion/',rightside, name='recomendacion'),
+    path('blog/',pagblog, name='blog'),
+    path('reclamo/',pagreclamos, name='reclamo'),
+    path('recomendacion/',pagrecomendaciones, name='recomendacion'),
     path('articulos/',post, name='post'),
 ]

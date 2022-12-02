@@ -22,7 +22,7 @@ def post(request):
     return render(request,'appMaverick/formpost.html')
 
 
-def leftside(request):
+def pagblog(request):
     entradas = Post.objects.all()
     queryset = request.GET.get("buscar")
     if queryset:
@@ -30,9 +30,9 @@ def leftside(request):
             Q(nombre__icontains = queryset) |
             Q(articulo__icontains  = queryset)
         ).distinct()
-    return render(request,'appMaverick/left-sidebar.html',{"posteos":entradas})
+    return render(request,'appMaverick/pagblog.html',{"posteos":entradas})
 
-def noside(request):
+def pagreclamos(request):
     mensaje = "Nos contactaremos por su reclamo"
     if request.method == "POST":
             q_nombre = request.POST["queja-name"]
@@ -41,10 +41,10 @@ def noside(request):
             q_nota = request.POST["queja-message"]
             obj = Reclamos(nombre=q_nombre, email=q_email,categoria=q_categoria,nota=q_nota)
             obj.save() 
-            return render(request,'appMaverick/no-sidebar.html',{"mensaje":mensaje})    
-    return render(request,'appMaverick/no-sidebar.html')
+            return render(request,'appMaverick/pagreclamos.html',{"mensaje":mensaje})    
+    return render(request,'appMaverick/pagreclamos.html')
 
-def rightside(request):
+def pagrecomendaciones(request):
     mensaje = "Gracias por tu Recomendacion"
     if request.method == "POST":
             reco_nombre = request.POST["reco-name"]
@@ -53,5 +53,5 @@ def rightside(request):
             reco_comentario = request.POST["reco-message"]
             obj = Recomendacion(nombre=reco_nombre, correo=reco_correo,comida=reco_comida,comentario=reco_comentario)
             obj.save()        
-            return render(request,'appMaverick/right-sidebar.html',{"mensaje":mensaje})     
-    return render(request,'appMaverick/right-sidebar.html')            
+            return render(request,'appMaverick/pagrecomendaciones.html',{"mensaje":mensaje})     
+    return render(request,'appMaverick/pagrecomendaciones.html')            
