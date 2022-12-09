@@ -1,0 +1,39 @@
+{% extends "appMaverick/master.html" %}
+{% block contenido %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <div class="wrapper style2">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-12-medium">
+                        <div id="content">
+
+                            <!-- Content -->											
+                                <!-- Form Editar-->
+                                <h3>Lista de Recomendaciones</h3>
+                                <ul>
+                                    {% for elemento in object_list %}
+                                
+                                    <li>        
+                                                <p><strong>Recomendacion: {{ elemento.nombre }} </strong></p>
+                                                
+                                                <p> 
+                                                    <a class="btn btn-secondary" href="{% url 'detalleRecomendacion' elemento.id %}">Ver</a> | 
+                                                    <a class="btn btn-info" href="{% url 'editRecomendacion' elemento.id %}">Editar</a> | 
+                                                    <a class="btn btn-danger" href="{% url 'deleteRecomendacion' elemento.id %}">Borrar</a> 
+                                                
+                                                </p>                            
+                                    {% endfor %}
+                                    </li>
+                                    
+                                </ul>
+                                </div>
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
