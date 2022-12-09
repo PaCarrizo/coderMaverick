@@ -1856,7 +1856,7 @@ input, select, textarea {
 	}
 
 	#main-wrapper {
-		background: url("images/fondo1.png"); 
+		background: #fff;
 	}
 
 	#footer-wrapper {

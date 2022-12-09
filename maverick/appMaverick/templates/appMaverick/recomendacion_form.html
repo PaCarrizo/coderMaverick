@@ -1,0 +1,29 @@
+{% extends "appMaverick/master.html" %}
+{% block contenido %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <div class="wrapper style2">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-12-medium">
+                        <div id="content">
+
+                            <!-- Content -->											
+                                <!-- Form Editar-->
+                                <h3>Recomendacion</h3>
+                                <form method="post"> {% csrf_token %}
+                                    <table>
+                                        {{ form.as_p }}
+                                    </table>                                   
+                                    <input type="submit" value="Ejecutar" />
+                                </form>
+                                </div>
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

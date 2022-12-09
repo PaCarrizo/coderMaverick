@@ -1,0 +1,29 @@
+{% extends "appMaverick/master.html" %}
+{% block contenido %}
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <div class="wrapper style2">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-12-medium">
+                        <div id="content">
+
+                            <!-- Content -->											
+                                <!-- Form Quejas-->
+                                <h3>Reclamos</h3>
+                                        <form method="POST"> {% csrf_token %}
+
+                                            <p><strong>Esta completamente seguro que desea eliminar este Reclamo"{{ object.nombre }}"?</strong></p>
+
+                                        <input type="submit" value="Borrar Reclamo">
+                                      </form>
+                                    </div>
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
