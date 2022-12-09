@@ -87,7 +87,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #303238 url("images/bg01.png");
+		background: #0a11dc url("images/bg01.png");
 	}
 
 		body.is-preload * {
@@ -1849,14 +1849,14 @@ input, select, textarea {
 /* Wrappers */
 
 	#header-wrapper {
-		background: url("images/bg01.png"), url("../../images/header.jpg");
+		background: url("images/fondo1.png"), url("../../images/header.jpg");
 		background-position: top left, center center;
 		background-size: auto, cover;
 		padding: 3em 0;
 	}
 
 	#main-wrapper {
-		background: #fff; 
+		background: url("images/fondo1.png"); 
 	}
 
 	#footer-wrapper {
@@ -1905,7 +1905,7 @@ input, select, textarea {
 	#header {
 		position: relative;
 		border-radius: 10px;
-		background: rgba(255, 255, 255, 0.1);
+		background: rgba(234, 14, 14, 0.1);
 		padding: 0.75em;
 		margin-bottom: 0;
 	}
