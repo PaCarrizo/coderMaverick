@@ -73,12 +73,22 @@ class BlogDelete(DeleteView):
     success_url = '/blog/' 
            
 
-
 #CRUD RECOMENDACION *****
+def listaRecomendacion(request):
+    entradas = Recomendacion.objects.all()
+    queryset = request.GET.get("buscarrecomendacion")
+    if queryset:
+        entradas = Recomendacion.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(comentario__icontains  = queryset)
+        ).distinct()
+    return render(request,'appMaverick/recomendaciones_list.html',{"object_list":entradas})
+
+
 class RecomendacionList(ListView):
     model = Recomendacion
     template_name = 'appMaverick/recomendaciones_list.html'
-
+ 
 class RecomendacionDetalle(DetailView):
     model = Recomendacion
     template_name = 'appMaverick/recomendaciones_detalle.html'
@@ -95,6 +105,16 @@ class RecomendacionDelete(DeleteView):
 
    
 #CRUD RECLAMOS *****
+def listaReclamos(request):
+    entradas = Reclamos.objects.all()
+    queryset = request.GET.get("buscarreclamo")
+    if queryset:
+        entradas = Reclamos.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(nota__icontains  = queryset)
+        ).distinct()
+    return render(request,'appMaverick/reclamos_list.html',{"object_list":entradas})
+
 class ReclamosList(ListView):
     model = Reclamos
     template_name = 'appMaverick/reclamos_list.html'
