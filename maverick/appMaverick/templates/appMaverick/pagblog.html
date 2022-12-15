@@ -35,13 +35,13 @@
 														<a href="#" class="image left"><img src="{{ elemento.imagen}}" alt="" /></a>
 														<div>
 															<header>
-																<span class="date">July 24</span>
-																<h3><a href="#">{{ elemento.nombre}}</a></h3>
+																<span class="date">{{ elemento.fecha }}</span>
+																<h3><a href="#">{{ elemento.nombre }}</a></h3>
 															</header>
-															<p>{{ elemento.articulo}}</p>
+															<p>{{ elemento.articulo }}</p>
 														</div>
 														<footer>
-															Autor: {{ elemento.autor}}
+															Autor: {{ elemento.autor }}
 														</footer>
 														<p> 													 
 															<a class="btn btn-success" href="{% url 'editPost' elemento.id %}">Editar</a> | 

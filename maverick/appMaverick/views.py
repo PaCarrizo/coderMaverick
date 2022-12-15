@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from django.views.generic.edit import DeleteView,UpdateView
 from django.views.generic import ListView,DetailView
+from datetime import datetime
+from django.utils import timezone
 
 # Create your views here.
 
@@ -13,7 +15,7 @@ def menu(request):
 
 #modulo que permite ingresar un reclamo
 def pagreclamos(request):
-    mensaje = "Nos contactaremos por su reclamo"
+    mensaje = "Nos contactaremos por su reclamo " 
     if request.method == "POST":
             q_nombre = request.POST["queja-name"]
             q_email = request.POST["queja-email"]
@@ -40,13 +42,14 @@ def pagrecomendaciones(request):
 #CRUD BLOG (post) *****************
 #modulo que permite ingresar un post en el blog
 def post(request):
+    actual = datetime.now()
     mensaje = "Gracias por contribuir con el BLOG"
     if request.method == "POST":
             p_nombre = request.POST["post-name"]
             p_articulo = request.POST["post-articulo"]
             p_autor = request.POST["post-autor"]
             p_imagen = request.POST["post-imagen"]
-            obj = Post(nombre=p_nombre, articulo=p_articulo,autor=p_autor,imagen=p_imagen)
+            obj = Post(nombre=p_nombre, articulo=p_articulo,autor=p_autor,imagen=p_imagen,fecha=actual.strftime("%Y-%m-%d"))
             obj.save() 
             return render(request,'appMaverick/formpost.html',{"mensaje":mensaje})    
     return render(request,'appMaverick/formpost.html')
@@ -73,12 +76,22 @@ class BlogDelete(DeleteView):
     success_url = '/blog/' 
            
 
-
 #CRUD RECOMENDACION *****
+def listaRecomendacion(request):
+    entradas = Recomendacion.objects.all()
+    queryset = request.GET.get("buscarrecomendacion")
+    if queryset:
+        entradas = Recomendacion.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(comentario__icontains  = queryset)
+        ).distinct()
+    return render(request,'appMaverick/recomendaciones_list.html',{"object_list":entradas})
+
+
 class RecomendacionList(ListView):
     model = Recomendacion
     template_name = 'appMaverick/recomendaciones_list.html'
-
+ 
 class RecomendacionDetalle(DetailView):
     model = Recomendacion
     template_name = 'appMaverick/recomendaciones_detalle.html'
@@ -95,6 +108,16 @@ class RecomendacionDelete(DeleteView):
 
    
 #CRUD RECLAMOS *****
+def listaReclamos(request):
+    entradas = Reclamos.objects.all()
+    queryset = request.GET.get("buscarreclamo")
+    if queryset:
+        entradas = Reclamos.objects.filter(
+            Q(nombre__icontains = queryset) |
+            Q(nota__icontains  = queryset)
+        ).distinct()
+    return render(request,'appMaverick/reclamos_list.html',{"object_list":entradas})
+
 class ReclamosList(ListView):
     model = Reclamos
     template_name = 'appMaverick/reclamos_list.html'

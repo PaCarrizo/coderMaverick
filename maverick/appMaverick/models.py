@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Recomendacion(models.Model):
@@ -12,6 +13,7 @@ class Post(models.Model):
     articulo = models.CharField(max_length=500)
     imagen = models.URLField()
     autor = models.CharField(max_length=50)
+    fecha = models.DateField(default=timezone.now)
 
 class Reclamos(models.Model):
     nombre = models.CharField(max_length=40)
