@@ -83,7 +83,7 @@ def listaRecomendacion(request):
     if queryset:
         entradas = Recomendacion.objects.filter(
             Q(nombre__icontains = queryset) |
-            Q(comentario__icontains  = queryset)
+            Q(comida__icontains  = queryset)
         ).distinct()
     return render(request,'appMaverick/recomendaciones_list.html',{"object_list":entradas})
 
@@ -129,8 +129,8 @@ class ReclamosDetalle(DetailView):
 class ReclamosEdit(UpdateView):
     model = Reclamos
     fields = '__all__'
-    success_url = '/listaReco/' 
+    success_url = '/listaReclam/' 
  
 class ReclamosDelete(DeleteView):
     model = Reclamos
-    success_url = '/listaReco/' 
+    success_url = '/listaReclam/' 

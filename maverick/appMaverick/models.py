@@ -7,6 +7,8 @@ class Recomendacion(models.Model):
     correo = models.EmailField()
     comida = models.CharField(max_length=11)
     comentario = models.CharField(max_length=500)
+    def __str__(self):
+        return self.comida
 
 class Post(models.Model):
     nombre = models.CharField(max_length=50)
@@ -14,10 +16,14 @@ class Post(models.Model):
     imagen = models.URLField()
     autor = models.CharField(max_length=50)
     fecha = models.DateField(default=timezone.now)
+    def __str__(self):
+        return self.nombre
 
 class Reclamos(models.Model):
     nombre = models.CharField(max_length=40)
     email = models.EmailField()
     categoria = models.CharField(max_length=11)
     nota = models.CharField(max_length=500)
+    def __str__(self):
+        return self.categoria
     

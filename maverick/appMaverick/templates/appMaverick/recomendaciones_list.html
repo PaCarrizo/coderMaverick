@@ -10,7 +10,7 @@
                         <div id="content">
 
                             <!-- Content -->											
-                                <!-- Form Editar-->
+                                <!--Lista-->
                                 <h3>Lista de Recomendaciones</h3>
                                 <div class="col-md-12 search">
                                     <form method="get">
@@ -32,7 +32,7 @@
                                     {% for elemento in object_list %}
                                 
                                     <li>        
-                                                <p><strong>Recomendacion: {{ elemento.nombre }} </strong></p>
+                                                <p><strong>Recomendacion por comida: {{ elemento.comida }} </strong></p>
                                                 
                                                 <p> 
                                                     <a class="btn btn-secondary" href="{% url 'detalleRecomendacion' elemento.id %}">Ver</a> | 
